@@ -1,5 +1,5 @@
 #STRATEGY USED : MARTINGALE/DCA
-
+from dotenv import load_dotenv
 import tkinter as tk
 from tkinter import ttk, messagebox
 import json
@@ -7,11 +7,14 @@ import time
 import threading
 import random
 import alpaca_trade_api as tradeapi
+import os
 
 DATA_FILE = "equities.json"
 
-key = "PKMA3YUJIMEQVLWD5XTFZIXS3T"
-secret_key = 'B8fe7qYHkR51PhrCFEn2UhAXYumfERAD1Vpb8jxx3v9V'
+load_dotenv()
+key = os.getenv("ALPACA_API_KEY")
+secret_key = os.getenv("ALPACA_SECRET_KEY")
+
 BASE_URL='https://paper-api.alpaca.markets/'
 api = tradeapi.REST(key, secret_key, BASE_URL, api_version='v2')
 
